@@ -306,7 +306,7 @@ export default function Page() {
         <div className="max-w-5xl mx-auto px-4 py-3">
           {/* Logo and title */}
           <div className="flex items-center space-x-3 fixed top-3 left-4 z-10 cursor-pointer" onClick={() => router.push('/')}>
-            <Image src='/logo.png' alt='logo' width={100} height={100} className='size-[3.5rem] w-full' />
+            <Image src='/logo.png' alt='logo' width={100} height={100} className='size-[1.5rem] sm:h-[3.5rem] w-full' />
           </div>
         </div>
       </div>
@@ -318,13 +318,21 @@ export default function Page() {
             {!hasMessages ? (
               // Welcome screen with suggestions
               <div className="py-20 text-center max-w-4xl mx-auto">
-                <div className='flex flex-row items-center size-fit gap-4 mx-auto h-fit mb-14'>
+                <div className='flex flex-col sm:flex-row items-center size-fit gap-4 mx-auto h-fit mb-14'>
+                  <video
+                    src='/justine.mp4'
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className='h-auto w-24 rounded-full object-cover block sm:hidden'
+                  />
                   <motion.h2
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-3xl font-medium text-zinc-800"
                   >
-                    <AuroraText className='text-3xl'>Justine</AuroraText>, l'assistante alumni de l'ESCP.
+                    <AuroraText className='text-3xl'>Justine</AuroraText>, l'assistante alumni de l'emlyon.
                   </motion.h2>
                   <video
                     src='/justine.mp4'
@@ -332,9 +340,9 @@ export default function Page() {
                     loop
                     muted
                     playsInline
-                    className='h-auto w-20 rounded-full object-cover'
+                    className='h-auto w-24 rounded-full object-cover hidden sm:block'
                   />
-                </div>                {/* Suggestion buttons - first row */}
+                </div>
                 <div className="flex flex-wrap gap-2 justify-center mb-4">
                   {suggestionData.slice(3, 6).map((suggestion, index) => (
                     <SuggestionButton
