@@ -332,7 +332,7 @@ export default function Page() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-3xl font-medium text-zinc-800"
                   >
-                    <AuroraText className='text-3xl'>Justine</AuroraText>, l'assistante alumni de l'emlyon.
+                    <AuroraText className='text-3xl'>Justine</AuroraText>, l'assistante alumni de l'Escp.
                   </motion.h2>
                   <video
                     src='/justine.mp4'
