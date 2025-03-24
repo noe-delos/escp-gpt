@@ -147,10 +147,6 @@ export default function Page() {
   // Initialize message count from localStorage on component mount
   useEffect(() => {
     setIsClientSide(true);
-
-    const storedCount = localStorage.getItem('userMessageCountEscp');
-    if (storedCount) {
-    }
   }, []);
 
   // Custom submit handler to check message quota
@@ -160,8 +156,8 @@ export default function Page() {
     // Get current message count from localStorage
     const currentCount = parseInt(localStorage.getItem('userMessageCountEscp') || '0');
 
-    // Check if user is over quota and not an admin
-    if (currentCount >= 2 && !isAdmin) {
+    // Check if user is attempting to send a second message and is not an admin
+    if (currentCount >= 1 && !isAdmin) {
       setShowCalendly(true);
       return;
     }
@@ -172,13 +168,6 @@ export default function Page() {
     // Update message count in localStorage
     const newCount = currentCount + 1;
     localStorage.setItem('userMessageCountEscp', newCount.toString());
-
-    // Show Calendly after second message
-    if (newCount === 2 && !isAdmin) {
-      setTimeout(() => {
-        setShowCalendly(true);
-      }, 500);
-    }
 
     // Reset textarea height
     if (textareaRef.current) {
